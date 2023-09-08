@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultats de la Recherche</title>
+</head>
+<body>
+    <h1>Résultats de la Recherche</h1>
+    
+    <% if (results && results.length > 0) { %>
+        <ul>
+            <% results.forEach(result => { %>
+                <li>
+                    <strong>Nom:</strong> <%= result.nomdexercice %><br>
+                    <strong>Prénom:</strong> <%= result.prenomdexercice %><br>
+                    <strong>RPPS:</strong> <%= result.identifiantpp %><br>
+                    <button class="select-button" data-nom="<%= result.nomdexercice %>" data-prenom="<%= result.prenomdexercice %>" data-rpps="<%= result.identifiantpp %>">Sélectionner</button>
+                </li>
+            <% }); %>
+        </ul>
+    <% } else { %>
+        <p>Aucun résultat trouvé.</p>
+    <% } %>
+
+    <div id="selected-results" style="display: none;">
+        <h2>Résultats Sélectionnés</h2>
+        <ul id="selected-list"></ul>
+        <button id="clear-button">Effacer la liste</button>
+    </div>
+
+    <script src="/script.js"></script>
+</body>
+</html>
